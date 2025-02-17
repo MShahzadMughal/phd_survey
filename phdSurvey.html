@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ph.D. Survey Portal</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 20px; background-color: #f0f8ff; }
+        .container { background: white; padding: 20px; border-radius: 10px; width: 60%; margin: auto; box-shadow: 0px 4px 10px rgba(0,0,0,0.2); text-align: left; }
+        h2, h3 { color: #007bff; text-align: center; }
+        p { text-align: justify; }
+        input, button { width: 80%; padding: 10px; margin: 10px 0; font-size: 16px; border-radius: 5px; border: 1px solid #ccc; display: block; margin-left: auto; margin-right: auto; }
+        input[disabled] { background-color: #e9ecef; color: #6c757d; }
+        button { background-color: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        .form-buttons { margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Questionnaire</h2>
+        <p><strong>Dear Participant,</strong></p>
+        <p>I am pursuing a doctoral study in the Institute of Education & Research, University of the Punjab, Lahore, under the supervision of <strong>Prof. Dr. Muhammad Shahid Farooq</strong>.</p>
+        <p>Thank you for participating in this research study. This survey is part of my PhD research titled <i>"Effects of Artificial Intelligence Practices on University Students' Metacognition and Productivity."</i> The purpose is to explore how students engage with AI-driven tools and how these practices influence their cognitive strategies and productivity.</p>
+        <h3>Survey Sections</h3>
+        <ul>
+            <li><strong>Demographic Data:</strong> Collect very short demographic data of the responder.</li>
+			<li><strong>Artificial Intelligence Practices Scale (AIPS):</strong> Measures engagement with AI-driven tools.</li>
+            <li><strong>University Students' Metacognition Scale (USMS):</strong> Assesses cognitive regulation and awareness.</li>
+            <li><strong>University Students' Productivity Scale (USPS):</strong> Evaluates productivity aspects like time management.</li>
+            <li><strong>Artificial Intelligence Tools Usage Scale (AITUS):</strong> Assesses AI tool usage frequency.</li>
+        </ul>
+        <p>Your responses are invaluable and will be kept strictly confidential for academic research purposes.</p>
+        <p><strong>Researcher:</strong><br> Muhammad Shahzad<br> Ph.D. (Education) Scholar<br> IER, University of The Punjab.<br> Contact: msmpu@yahoo.com</p>
+    </div>
+    
+    <div class="container">
+        <strong><center><label for="SurveyID">The Survey ID:</label></center>
+        <input type="text" id="SurveyID" style="text-align:center"><br></strong>
+		<h3>Click the related button to Complete the Survery Section</h3>
+        <div class="form-buttons">
+            <button onclick="openForm(0)">Demographic Data:</button>
+			<button onclick="openForm(1)">Section-I: Artificial Intelligence Practices Scale (AIPS)</button>
+            <button onclick="openForm(2)">Section-II: University Students' Metacognition Scale (USMS)</button>
+            <button onclick="openForm(3)">Section-III: University Students' Productivity Scale (USPS)</button>
+            <button onclick="openForm(4)">Section-IV: Artificial Intelligence Tools Usage Scale (AITUS)</button>
+        </div>
+    </div>
+
+    <script>
+        function getQueryParam(param) {
+            let urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        window.onload = function() {
+            let SurveyID = getQueryParam("pSurveyID");
+            if (SurveyID) {
+                document.getElementById("SurveyID").value = SurveyID;
+            } else {
+                alert("Survery ID is missing in the URL!");
+            }
+        };
+
+        function openForm(formNumber) {
+            let SurveyID = encodeURIComponent(document.getElementById("SurveyID").value);
+
+            if (!SurveyID) {
+                alert("Please enter Survery ID.");
+                return;
+            }
+
+            let forms = {
+                0: "https://docs.google.com/forms/d/e/1FAIpQLSdd1aTLBGbOW1xBvweMKVRIDqtLLjY_3F_Z_IfhNlbdoKB7hQ/viewform?usp=pp_url&entry.1596512225=" + SurveyID ,
+				1: "https://docs.google.com/forms/d/e/1FAIpQLSdee-Q8MuvhqEuCnMBvQrXhfjGm0EpuZr_q9d7sCgCAkCIH9A/viewform?usp=pp_url&entry.1882748073=" + SurveyID ,
+                2: "https://docs.google.com/forms/d/e/1FAIpQLSedEAij98oRP7b1bR-3hIf397Ic6s3O--SaSGo5TLMR_l13fQ/viewform?usp=pp_url&entry.1882748073=" + SurveyID ,
+                3: "https://docs.google.com/forms/d/e/1FAIpQLSfOl99D56YZm1xh60-ZtW2CE3jXelZJZejLdVW3NydKny00dA/viewform?usp=pp_url&entry.1882748073=" + SurveyID ,
+                4: "https://docs.google.com/forms/d/e/1FAIpQLSedi0wR-MXdaHcpm77cvFgk5jj7vLeCRwdFvJyUenkQqAtQcw/viewform?usp=pp_url&entry.1882748073=" + SurveyID 
+            };
+
+            window.open(forms[formNumber], "_blank");
+        }
+    </script>
+
+</body>
+</html>
